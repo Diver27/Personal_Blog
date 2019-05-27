@@ -16,7 +16,7 @@ require_once('./inc/navigate-bar.php');
 ?>
 
 <!-- about section -->
-<div class="about" id="about">
+<div class="about">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12">
@@ -25,9 +25,9 @@ require_once('./inc/navigate-bar.php');
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 desc">
 
-                <h3>本站所有者</h3>
+                <h2>本站作者</h2>
                 <p>
-                    是一条狗
+                    现年22<br>擅长刨坑，打滚，半夜嚎
                 </p>
             </div>
         </div>
