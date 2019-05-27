@@ -1,10 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>深潜景色</title>
+</head>
+<body>
 <?php
-$title="主页-深潜景色";
-require_once("./inc/header.php");
+require_once("./inc/navigate-bar.php");
 ?>
 <!-- header -->
 <header class="header">
-    <div class="overlay"></div>
+<!--    <div class="overlay"></div>-->
     <div class="container">
         <h1 class="text-center home_welcome">
             A Deep Diver's Deep Dream
