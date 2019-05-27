@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>主页-深潜景色</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title><?php echo $title; ?></title>
 </head>
 <body>
 <!--导航栏-->
 <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-        <img src="media/logo.png" alt="Logo" style="width:40px;">
+    <a class="navbar-brand" href="../index.php">
+        <img src="../media/logo.png" alt="Logo" style="width:40px;">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -20,13 +20,13 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav mr-lg-auto">
             <li class="nav-item">
-                <a class="nav-link" href="./blog.html">博文</a>
+                <a class="nav-link" href="../blog.php">博文</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./album.html">相册</a>
+                <a class="nav-link" href="../album.php">相册</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./about.html">关于</a>
+                <a class="nav-link" href="../about.php">关于</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -35,20 +35,3 @@
         </form>
     </div>
 </nav>
-
-<!-- header -->
-<header class="header">
-    <div class="overlay"></div>
-    <div class="container">
-        <h1 class="text-center home_welcome">
-            A Deep Diver's Deep Dream
-        </h1>
-    </div>
-</header>
-
-<!-- Add JavaScript file from js file -->
-<script src="./js/jquery-3.4.1.js"></script>
-<script src="./js/bootstrap.js"></script>
-<script src="./js/script.js"></script>
-</body>
-</html>
