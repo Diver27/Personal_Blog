@@ -11,7 +11,7 @@
 <body>
 
 <?php
-$title="abt";
+$tag="abt";
 require_once('./inc/navigate-bar.php');
 ?>
 

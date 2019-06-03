@@ -11,7 +11,7 @@
 <body>
 
 <?php
-$title="b";
+$tag="b";
 require_once('./inc/navigate-bar.php');
 ?>
 
@@ -20,7 +20,7 @@ require_once('./inc/navigate-bar.php');
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-lg-3 col-sm-12">
-                <div class="card">
+                <div class="card" >
                     <div class="card-img">
                         <img src="media/temp_image.jpg" class="img-fluid">
                     </div>
@@ -33,7 +33,7 @@ require_once('./inc/navigate-bar.php');
                         </p>
                     </div>
                     <div class="card-footer">
-                        <a href="" class="card-link">Read more</a>
+                        <a href="blog-item.php" class="card-link">Read more</a>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@ require_once('./inc/navigate-bar.php');
                         </p>
                     </div>
                     <div class="card-footer">
-                        <a href="" class="card-link">Read more</a>
+                        <a href="blog-item.php" class="card-link">Read more</a>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@ require_once('./inc/navigate-bar.php');
                         </p>
                     </div>
                     <div class="card-footer">
-                        <a href="" class="card-link">Read more</a>
+                        <a href="blog-item.php" class="card-link">Read more</a>
                     </div>
                 </div>
             </div>

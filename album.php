@@ -10,7 +10,7 @@
 </head>
 <body>
 <?php
-$title="a";
+$tag="a";
 require_once('./inc/navigate-bar.php');
 ?>
 
