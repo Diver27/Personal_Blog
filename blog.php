@@ -19,60 +19,32 @@ require_once('./inc/navigate-bar.php');
 <div class="blog" id="blog">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-lg-3 col-sm-12">
-                <div class="card" >
-                    <div class="card-img">
-                        <img src="media/temp_image.jpg" class="img-fluid">
-                    </div>
-
-                    <div class="card-body">
-                        <h4 class="card-title">Post Title</h4>
-                        <p class="card-text">
-
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="blog-item.php" class="card-link">Read more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-3 col-sm-12">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="media/temp_image.jpg" class="img-fluid">
-                    </div>
-
-                    <div class="card-body">
-                        <h4 class="card-title">Post Title</h4>
-                        <p class="card-text">
-
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="blog-item.php" class="card-link">Read more</a>
+            <?php
+            $conn = new mysqli('localhost', 'root', 'root', 'web');
+            $conn->query('set names utf8');
+            $sql = "SELECT idBlog, title, short_desc FROM Blog";
+            $result = $conn->query($sql);
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                <div class="col-md-4 col-lg-3 col-sm-12">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="media/temp_image.jpg" class="img-fluid">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title"><?php echo $row['title'] ?></h4>
+                            <p class="card-text">
+                                <?php echo $row['short_desc'] ?>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <a class="card-link">Read more</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 col-lg-3 col-sm-12">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="media/temp_image.jpg" class="img-fluid">
-                    </div>
-
-                    <div class="card-body">
-                        <h4 class="card-title">Post Title</h4>
-                        <p class="card-text">
-
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="blog-item.php" class="card-link">Read more</a>
-                    </div>
-                </div>
-            </div>
+                <?php
+            }
+            ?>
         </div>
     </div>
 </div>
@@ -91,5 +63,10 @@ require_once('./inc/navigate-bar.php');
 <script src="./js/jquery-3.4.1.js"></script>
 <script src="./js/bootstrap.js"></script>
 <script src="./js/script.js"></script>
+<script>
+    $(function(){
+
+    })
+</script>
 </body>
 </html>

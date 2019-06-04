@@ -9,7 +9,7 @@ class DB
         $this->conn = new mysqli($serverName, $userName, $password, $dbName);
         $this->conn->query('set names utf8');
         if ($this->conn->connect_error) {
-            die("连接失败: " . $this->conn->connect_error."\n");
+            die("连接失败: " . $this->conn->connect_error . "\n");
         }
         echo "连接成功\n";
     }
@@ -40,13 +40,13 @@ class DB
 
     public function getBlogList()
     {
-        $sql="SELECT idBlog, title, short_desc FROM Blog";
-        $result=$this->conn->query($sql);
+        $sql = "SELECT idBlog, title, short_desc FROM Blog";
+        $result = $this->conn->query($sql);
 
-        $list=array();
-        while($row=$result->fetch_assoc()){
-            $tempArray=array($row['idBlog'],$row['title'],$row['short_desc']);
-            array_push($list,$tempArray);
+        $list = array();
+        while ($row = $result->fetch_assoc()) {
+            $tempArray = array($row['idBlog'], $row['title'], $row['short_desc']);
+            array_push($list, $tempArray);
         }
         return $list;
         //TODO 异常处理
@@ -57,14 +57,15 @@ class DB
 //        }
     }
 
-    public function getBlogContent($idBlog){
-        $sql=$this->conn->prepare("SELECT * from Blog WHERE idBLog=?");
-        $sql->bind_param("i",$idBlog);
+    public function getBlogContent($idBlog)
+    {
+        $sql = $this->conn->prepare("SELECT * from Blog WHERE idBLog=?");
+        $sql->bind_param("i", $idBlog);
         $sql->execute();
         $sql->store_result();
-        $sql->bind_result($id,$title,$short_desc,$content);
+        $sql->bind_result($id, $title, $short_desc, $content);
         $sql->fetch();
-        $result=array($id,$title,$short_desc,$content);
+        $result = array($id, $title, $short_desc, $content);
 
         return $result;
     }
@@ -75,4 +76,3 @@ $userName = "root";
 $password = "root";
 $dbName = "web";
 $db = new DB($serverName, $userName, $password, $dbName);
-
