@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav mr-lg-auto">
             <li class="nav-item">
-                <a class="nav-link<?php if($tag=="b") echo " active"; ?>" href="../blog.php">博文</a>
+                <a class="nav-link<?php if($tag=="b") echo " active"; ?>" href="../blog.php?page=1">博文</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link<?php if($tag=="a") echo " active"; ?>" href="../album.php">相册</a>

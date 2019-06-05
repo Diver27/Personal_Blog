@@ -20,13 +20,10 @@ require_once('./inc/navigate-bar.php');
     <div class="container">
         <div class="row">
             <?php
-//            $conn = new mysqli('localhost', 'root', 'root', 'web');
-//            $conn->query('set names utf8');
-//            $sql = "SELECT idBlog, title, short_desc FROM Blog";
-//            $result = $conn->query($sql);
             include_once ("./model/db-connection.php");
-            $result=$db->getBlogList();
-            while ($row = $result->fetch_assoc()) {
+            $page=$_GET['page'];
+            $result=$db->getBlogListPage($page);
+            for($i=0;$i<sizeof($result,0);$i++){
                 ?>
                 <div class="col-md-4 col-lg-3 col-sm-12">
                     <div class="card">
@@ -34,13 +31,13 @@ require_once('./inc/navigate-bar.php');
                             <img src="media/temp_image.jpg" class="img-fluid">
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title"><?php echo $row['title'] ?></h4>
+                            <h4 class="card-title"><?php echo $result[$i][1] ?></h4>
                             <p class="card-text">
-                                <?php echo $row['short_desc'] ?>
+                                <?php echo $result[$i][2] ?>
                             </p>
                         </div>
                         <div class="card-footer">
-                            <a href="blog-item.php?id=<?php echo $row['idBlog'] ?>" target="_blank" p class="card-link">Read more</a>
+                            <a href="blog-item.php?id=<?php echo $result[$i][0] ?>" target="_blank" p class="card-link">Read more</a>
                         </div>
                     </div>
                 </div>
@@ -53,11 +50,11 @@ require_once('./inc/navigate-bar.php');
 
 <div>
     <ul class="pagination justify-content-center">
-<!--        <li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
-<!--        <li class="page-item"><a class="page-link" href="#">1</a></li>-->
-<!--        <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-<!--        <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-<!--        <li class="page-item"><a class="page-link" href="#">Next</a></li>-->
+        <li class="page-item"><a class="page-link" href="#">前页</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">后页</a></li>
     </ul>
 </div>
 
