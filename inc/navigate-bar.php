@@ -17,8 +17,8 @@
                 <a class="nav-link<?php if($tag=="abt") echo " active"; ?>" href="../about.php">关于</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="关键词" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" action="/search-result.php" method="get" target="_self">
+            <input class="form-control mr-sm-2" type="search" placeholder="关键词" aria-label="Search" name="keyword">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
         </form>
     </div>

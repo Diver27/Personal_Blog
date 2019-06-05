@@ -25,7 +25,7 @@ require_once("./inc/navigate-bar.php");
 <!-- Add JavaScript file from js file -->
 <script src="./js/jquery-3.4.1.js"></script>
 <script src="./js/bootstrap.js"></script>
-<script src="./js/script.js"></script>
+<!--<script src="js/pagination.js"></script>-->
 <script>
     $(document).ready(function () {
         $('.header').height($(window).height());
