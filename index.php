@@ -5,7 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/style.css">
+<!--    <link rel="stylesheet" href="./css/style.css">-->
+    <style>
+        .header{
+            position: relative;
+            background-image: url('/media/temp_image.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .overlay{
+            position: absolute;
+            min-height: 100%;
+            min-width: 100%;
+            left: 0;
+            top: 0;
+            background: rgba(244, 244, 244, 0.50);
+        }
+
+        .home_welcome{
+            color: black;
+        }
+    </style>
     <title>深潜景色</title>
 </head>
 <body>

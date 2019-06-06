@@ -9,7 +9,6 @@ $array=$db->getBlogContent($_GET['id']);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/style.css">
     <style>
         section{width:100%; float:left;}
         .banner-section{background-image:url("/media/temp_image.jpg"); background-size:cover; height: 380px; left: 0; position: absolute; top: 0; background-position:0;}

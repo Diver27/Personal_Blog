@@ -46,9 +46,9 @@ class DB
 
     public function getBlogListPage($page){
         $offset=20;
-        $page--;
+        $limit=--$page*$offset;
         $sql=$this->conn->prepare("SELECT idBlog, title, short_desc FROM Blog LIMIT ?, ?");
-        $sql->bind_param("ii",$page,$offset);
+        $sql->bind_param("ii",$limit,$offset);
         $sql->execute();
         $sql->store_result();
         $sql->bind_result($id, $title, $short_desc);

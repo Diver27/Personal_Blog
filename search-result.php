@@ -9,7 +9,16 @@ $result = $db->searchItem($_GET['keyword']);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        <style>
+        .blog{
+            margin:4em 0;
+        }
+
+        .card{
+            margin:1em 0;
+        }
+    </style>
     <title>搜索结果-深潜景色</title>
 </head>
 <body>
@@ -19,14 +28,10 @@ require_once('./inc/navigate-bar.php');
 ?>
 
 <!-- Posts section -->
-<div class="blog" id="blog">
+<div class="blog">
     <div class="container">
         <div class="row">
             <?php
-            //            $conn = new mysqli('localhost', 'root', 'root', 'web');
-            //            $conn->query('set names utf8');
-            //            $sql = "SELECT idBlog, title, short_desc FROM Blog";
-            //            $result = $conn->query($sql);
             for($i=0;$i<sizeof($result,0);$i++){
                 ?>
                 <div class="col-md-4 col-lg-3 col-sm-12">
@@ -52,20 +57,25 @@ require_once('./inc/navigate-bar.php');
     </div>
 </div>
 
-<div>
-    <ul class="pagination justify-content-center">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-    </ul>
-</div>
+<!--<div>-->
+<!--    <ul class="pagination justify-content-center">-->
+<!--        <li class="page-item --><?php //if($page==1) echo "disabled" ?><!--"><a class="page-link" href="/blog.php?page=--><?php //echo $page-1 ?><!--" >前页</a></li>-->
+<!--        --><?php
+//        for($i=1;$i<=$totalPageNum;$i++){
+//            if($page==$i){
+//                $ifActive=" active";
+//            }else{
+//                $ifActive="";
+//            }
+//            echo "<li class=\"page-item".$ifActive."\"><a class=\"page-link\" href=\"/blog.php?page=".$i."\">".$i."</a></li>";
+//        }
+//        ?>
+<!--        <li class="page-item --><?php //if($page==$totalPageNum) echo "disabled" ?><!--"><a class="page-link" href="/blog.php?page=--><?php //echo $page+1 ?><!--">后页</a></li>-->
+<!--    </ul>-->
+<!--</div>-->
 
 <!-- Add JavaScript file from js file -->
 <script src="./js/jquery-3.4.1.js"></script>
 <script src="./js/bootstrap.js"></script>
-<script src="js/jquery.twbsPagination.js"></script>
-<script src="js/pagination.js"></script>
 </body>
 </html>

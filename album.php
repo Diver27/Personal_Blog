@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .album{
+            margin: 4em 0;
+            position: relative;
+        }
+
+        .album img{
+            height: 15rem;
+            width: 100%;
+            margin: 1em;
+        }
+    </style>
     <title>相册-深潜景色</title>
 </head>
 <body>
@@ -14,7 +25,7 @@ $tag="a";
 require_once('./inc/navigate-bar.php');
 ?>
 
-<div class="portfolio" id="portfolio">
+<div class="album">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12">
@@ -64,6 +75,5 @@ require_once('./inc/navigate-bar.php');
 <script src="./js/jquery-3.4.1.js"></script>
 <script src="./js/bootstrap.js"></script>
 <script src="js/jquery.twbsPagination.js"></script>
-<script src="js/pagination.js"></script>
 </body>
 </html>
