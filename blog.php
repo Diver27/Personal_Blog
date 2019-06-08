@@ -29,37 +29,54 @@ require_once('./inc/navigate-bar.php');
 <div class="blog">
     <div class="container">
         <div class="row">
-            <?php
-            include_once ("./model/db-connection.php");
-            $page=$_GET['page'];
-            $result=$db->getBlogListPage($page);
-            $totalBlogNum=$db->getBlogNum();
-            if($totalBlogNum%20==0) {
-                $totalPageNum = $totalBlogNum / 20;
-            }else{
-                $totalPageNum=$totalBlogNum/20+1;
-            }
-            for($i=0;$i<sizeof($result,0);$i++){
-                ?>
-                <div class="col-md-4 col-lg-3 col-sm-12">
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="media/temp_image.jpg" class="img-fluid">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title"><?php echo $result[$i][1] ?></h4>
-                            <p class="card-text">
-                                <?php echo $result[$i][2] ?>
-                            </p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="blog-item.php?id=<?php echo $result[$i][0] ?>" target="_blank" p class="card-link">Read more</a>
-                        </div>
+            <div class="col-sm-3 px-1 bg-light">
+                <div class="py-2 flex-grow-1">
+                    <div class="nav flex-sm-column">
+                        <a href="" class="nav-link d-none d-sm-inline disabled">目录</a>
+                        <a href="" class="nav-link">分类一</a>
+                        <a href="" class="nav-link">分类二</a>
+                        <a href="" class="nav-link">分类三</a>
+                        <a href="" class="nav-link">分类四</a>
+                        <a href="" class="nav-link">分类五</a>
                     </div>
                 </div>
-                <?php
-            }
-            ?>
+            </div>
+            <div class="col col-sm-9">
+                <div class="row">
+                    <?php
+                    include_once("./model/db-connection.php");
+                    $page = $_GET['page'];
+                    $result = $db->getBlogListPage($page);
+                    $totalBlogNum = $db->getBlogNum();
+                    if ($totalBlogNum % 20 == 0) {
+                        $totalPageNum = $totalBlogNum / 20;
+                    } else {
+                        $totalPageNum = $totalBlogNum / 20 + 1;
+                    }
+                    for ($i = 0; $i < sizeof($result, 0); $i++) {
+                        ?>
+                        <div class="col-md-4 col-lg-3 col-sm-12">
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="media/temp_image.jpg" class="img-fluid">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title"><?php echo $result[$i][1] ?></h4>
+                                    <p class="card-text">
+                                        <?php echo $result[$i][2] ?>
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="blog-item.php?id=<?php echo $result[$i][0] ?>" target="_blank" p
+                                       class="card-link">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -89,6 +106,5 @@ require_once('./inc/navigate-bar.php');
 <!-- Add JavaScript file from js file -->
 <script src="./js/jquery-3.4.1.js"></script>
 <script src="./js/bootstrap.js"></script>
-<script src="js/jquery.twbsPagination.js"></script>
 </body>
 </html>

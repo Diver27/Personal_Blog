@@ -62,7 +62,7 @@ class DB
 
     public function getBlogContent($idBlog)
     {
-        $sql = $this->conn->prepare("SELECT * from Blog WHERE idBLog=?");
+        $sql = $this->conn->prepare("SELECT idBlog, title, short_desc, content from Blog WHERE idBLog=?");
         $sql->bind_param("i", $idBlog);
         $sql->execute();
         $sql->store_result();
@@ -84,6 +84,16 @@ class DB
         while($sql->fetch()){
             $tmp=array($id, $title, $short_desc);
             array_push($result,$tmp);
+        }
+        return $result;
+    }
+
+    public function getBlogCategory(){
+        $sql="SELECT idCategory, name FROM Category";
+        $result = $this->conn->query($sql);
+        $category=array();
+        while($result->fetch_assoc()){
+
         }
         return $result;
     }

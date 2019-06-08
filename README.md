@@ -1,6 +1,7 @@
 # Personal_Blog
 A personal blog site prototype built with PHP, utilizing Bootstrap 4.3  
-TODO:
+   
+### TODO:
 - 博客从数据库读取文章列表 CHECK
 - 博客详情页面，由读取数据库数据生成 CHECK
 - 文章编辑页面：使用CKEditor
