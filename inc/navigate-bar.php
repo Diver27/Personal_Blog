@@ -8,13 +8,13 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav mr-lg-auto">
             <li class="nav-item">
-                <a class="nav-link<?php if($tag=="b") echo " active"; ?>" href="../blog.php?page=1">博文</a>
+                <a class="nav-link<?php if($tag=="b") echo " active"; ?>" href="/blog.php?page=1&category=0">博文</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link<?php if($tag=="a") echo " active"; ?>" href="../album.php">相册</a>
+                <a class="nav-link<?php if($tag=="a") echo " active"; ?>" href="/album.php">相册</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link<?php if($tag=="abt") echo " active"; ?>" href="../about.php">关于</a>
+                <a class="nav-link<?php if($tag=="abt") echo " active"; ?>" href="/about.php">关于</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="/search-result.php" method="get" target="_self">

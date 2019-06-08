@@ -1,3 +1,10 @@
+<?php
+include_once("./model/db-connection.php");
+$page = $_GET['page'];
+$pageLimit=16;
+$category=$_GET['category'];
+if($category==null) $category=0;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,25 +40,30 @@ require_once('./inc/navigate-bar.php');
                 <div class="py-2 flex-grow-1">
                     <div class="nav flex-sm-column">
                         <a href="" class="nav-link d-none d-sm-inline disabled">目录</a>
-                        <a href="" class="nav-link">分类一</a>
-                        <a href="" class="nav-link">分类二</a>
-                        <a href="" class="nav-link">分类三</a>
-                        <a href="" class="nav-link">分类四</a>
-                        <a href="" class="nav-link">分类五</a>
+                        <?php
+                        $categoryList=$db->getBlogCategoryList();
+                        for($i=0;$i<sizeof($categoryList,0);$i++) {
+                            if($category==$categoryList[$i]['idCategory']){
+                                $isActive=" active";
+                            }else{
+                                $isActive="";
+                            }
+                            echo "<a href=\"/blog.php?page=1&category=".$categoryList[$i]['idCategory']."\" class=\"nav-link".$isActive."\">".$categoryList[$i]['name']."</a>";
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
             <div class="col col-sm-9">
                 <div class="row">
                     <?php
-                    include_once("./model/db-connection.php");
-                    $page = $_GET['page'];
-                    $result = $db->getBlogListPage($page);
-                    $totalBlogNum = $db->getBlogNum();
-                    if ($totalBlogNum % 20 == 0) {
-                        $totalPageNum = $totalBlogNum / 20;
+                    $result = $db->getBlogList($page,$pageLimit,$category);
+                    $totalBlogNum = $db->getBlogNum($category);
+                    //$totalBlogNum=sizeof($result,0);
+                    if ($totalBlogNum % $pageLimit == 0) {
+                        $totalPageNum = $totalBlogNum / $pageLimit;
                     } else {
-                        $totalPageNum = $totalBlogNum / 20 + 1;
+                        $totalPageNum = $totalBlogNum / $pageLimit + 1;
                     }
                     for ($i = 0; $i < sizeof($result, 0); $i++) {
                         ?>
@@ -83,11 +95,6 @@ require_once('./inc/navigate-bar.php');
 
 <div>
     <ul class="pagination justify-content-center">
-<!--        <li class="page-item"><a class="page-link" href="#" >前页</a></li>-->
-<!--        <li class="page-item"><a class="page-link" href="#">1</a></li>-->
-<!--        <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-<!--        <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-<!--        <li class="page-item"><a class="page-link" href="#">后页</a></li>-->
         <li class="page-item <?php if($page==1) echo "disabled" ?>"><a class="page-link" href="/blog.php?page=<?php echo $page-1 ?>" >前页</a></li>
         <?php
         for($i=1;$i<=$totalPageNum;$i++){

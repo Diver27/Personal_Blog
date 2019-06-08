@@ -30,25 +30,29 @@ class DB
         }
     }
 
-    public function getBlogNum(){
-        $sql="SELECT COUNT(idBlog) FROM Blog";
-        $result=$this->conn->query($sql);
-        $count=$result->fetch_assoc()['COUNT(idBlog)'];
-        return (int)$count;
+    public function getBlogNum($category){
+        if($category==0){
+            $sql=$this->conn->prepare("SELECT COUNT(idBlog) FROM Blog");
+        }else {
+            $sql = $this->conn->prepare("SELECT COUNT(idBlog) FROM Blog WHERE idCategory=?");
+            $sql->bind_param("i",$category);
+        }
+        $sql->execute();
+        $sql->store_result();
+        $sql->bind_result($num);
+        $sql->fetch();
+        return (int)$num;
     }
 
-    public function getBlogList()
-    {
-        $sql = "SELECT idBlog, title, short_desc FROM Blog";
-        $result = $this->conn->query($sql);
-        return $result;
-    }
-
-    public function getBlogListPage($page){
-        $offset=20;
+    public function getBlogList($page, $offset, $category){
         $limit=--$page*$offset;
-        $sql=$this->conn->prepare("SELECT idBlog, title, short_desc FROM Blog LIMIT ?, ?");
-        $sql->bind_param("ii",$limit,$offset);
+        if($category==0) {
+            $sql = $this->conn->prepare("SELECT idBlog, title, short_desc FROM Blog LIMIT ?, ?");
+            $sql->bind_param("ii",$limit,$offset);
+        }else{
+            $sql = $this->conn->prepare("SELECT idBlog, title, short_desc FROM Blog WHERE idCategory = ? LIMIT ?, ? ");
+            $sql->bind_param("iii",$category,$limit,$offset);
+        }
         $sql->execute();
         $sql->store_result();
         $sql->bind_result($id, $title, $short_desc);
@@ -88,14 +92,14 @@ class DB
         return $result;
     }
 
-    public function getBlogCategory(){
+    public function getBlogCategoryList(){
         $sql="SELECT idCategory, name FROM Category";
         $result = $this->conn->query($sql);
         $category=array();
-        while($result->fetch_assoc()){
-
+        while($row=$result->fetch_assoc()){
+            array_push($category,$row);
         }
-        return $result;
+        return $category;
     }
 }
 
@@ -104,3 +108,13 @@ $userName = "root";
 $password = "root";
 $dbName = "web";
 $db = new DB($serverName, $userName, $password, $dbName);
+
+
+switch($_GET['action']){
+    case "getBlogCategoryList":
+        $data=$db->getBlogCategoryList();
+        echo $data[0]['name'];
+    case "getBlogList":
+        $data=$db->getBlogList(1,16,1001);
+        echo $data[0][1];
+}
