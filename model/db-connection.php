@@ -19,7 +19,7 @@ class DB
         $this->conn->close();
     }
 
-    public function insertBlog($title, $short_desc, $content)
+    public function createBlog($title, $short_desc, $content)
     {
         $sql = $this->conn->prepare("INSERT INTO Blog (title,short_desc,content) VALUE (?,?,?)");
         $sql->bind_param("sss", $title, $short_desc, $content);
@@ -28,6 +28,10 @@ class DB
         } else {
             echo "Error: " . $sql . "<br>" . $this->conn->error;
         }
+    }
+
+    public function createComment($idBlog){
+        //TODO 评论
     }
 
     public function getBlogNum($category){
@@ -77,6 +81,10 @@ class DB
         return $result;
     }
 
+    public function getComment($idBlog){
+
+    }
+
     public function searchItem($title){
         $sql=$this->conn->prepare("SELECT idBlog, title, short_desc FROM Blog WHERE title LIKE ?");
         $param="%".$title."%";
@@ -117,4 +125,9 @@ switch($_GET['action']){
     case "getBlogList":
         $data=$db->getBlogList(1,16,1001);
         echo $data[0][1];
+}
+
+switch ($_POST['action']){
+    case "createBlog":
+        $db->createBlog($_POST['title'],$_POST['short_desc'],$_POST['content']);
 }
