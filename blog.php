@@ -15,11 +15,16 @@ if($category==null) $category=0;
     <link rel="stylesheet" href="/css/side-bar.css">
     <style>
         .blog{
-            margin:4em 0;
+            margin:1em 0;
         }
 
         .card{
             margin:1em 0;
+        }
+        #addBlog{
+            margin-right:5em;
+            margin-top: 1em;
+            margin-bottom: 1em;
         }
     </style>
     <title>博文-深潜景色</title>
@@ -32,6 +37,9 @@ require_once('./inc/navigate-bar.php');
 //require_once('./inc/side-menu.php'); ?
 ?>
 
+<div style="text-align: right">
+<button type="button" class="btn btn-primary" id="addBlog" >创建新博文</button>
+</div>
 <!-- Posts section -->
 <div class="blog">
     <div class="container">
@@ -113,5 +121,10 @@ require_once('./inc/navigate-bar.php');
 <!-- Add JavaScript file from js file -->
 <script src="./js/jquery-3.4.1.js"></script>
 <script src="./js/bootstrap.js"></script>
+<script>
+    $("#addBlog").click(function(event){
+        window.location.href="blog-edit.php";
+    });
+</script>
 </body>
 </html>
