@@ -124,7 +124,13 @@ require_once('./inc/navigate-bar.php');
 <script>
     $("#addBlog").click(function(event){
         window.location.href="blog-edit.php";
-    });
+    })
+
+    // window.onload=function(){
+    //     var div=document.getElementById("external");
+    //     var button="<button type=\"button\" class=\"btn btn-primary\" id=\"addBlog\"  >创建新博文</button>";
+    //     div.innerText=button;
+    // }
 </script>
 </body>
 </html>

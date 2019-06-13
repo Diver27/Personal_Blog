@@ -83,8 +83,17 @@ require_once("./inc/navigate-bar.php");
         </div>
 </section>
 
+<div style="text-align: right">
+    <button type="button" class="btn btn-primary" id="editBlog" >编辑博文</button>
+</div>
+
 <!-- Add JavaScript file from js file -->
 <script src="./js/jquery-3.4.1.js"></script>
 <script src="./js/bootstrap.js"></script>
+<script>
+    $("#editBlog").click(function(event){
+
+    });
+</script>
 </body>
 </html>

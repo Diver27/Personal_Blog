@@ -59,7 +59,6 @@ require_once('./inc/navigate-bar.php');
         var title=document.getElementById("title").value;
         var short_desc=document.getElementById("short_desc").value;
         var content=editor.getData();
-        console.log(title,content);
         $.post('/model/db-connection.php',{
             'action':"createBlog",
             'title':title,
