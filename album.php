@@ -25,6 +25,12 @@ $tag="a";
 require_once('./inc/navigate-bar.php');
 ?>
 
+<!--<form action="/model/db-connection.php" method="post" enctype="multipart/form-data">-->
+<!--    上传图片:-->
+<!--    <input type="file" name="pic">-->
+<!--    <input type="submit" value="上传">-->
+<!--</form>-->
+
 <div class="album">
     <div class="container">
         <div class="row">

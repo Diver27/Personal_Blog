@@ -34,7 +34,6 @@ if($category==null) $category=0;
 <?php
 $tag="b";
 require_once('./inc/navigate-bar.php');
-//require_once('./inc/side-menu.php'); ?
 ?>
 
 <div style="text-align: right">
