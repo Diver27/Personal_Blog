@@ -10,6 +10,8 @@ include_once("model/db-connection.php");
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./css/bootstrap.css">
     <script src="/js/ckeditor5-build-classic/ckeditor.js"></script>
+    <script src="js/ckeditor5-build-classic/translations/zh-cn.js"></script>
+    <script src="ckfinder/ckfinder.js"></script>
     <style>
         .ck-editor__editable {
             min-height: 400px;
@@ -37,7 +39,17 @@ require_once('./inc/navigate-bar.php');
     <div class="input-group mb-3 m-auto" style="width:50%">
         <input type="text" class="form-control" id="short_desc" placeholder="输入简述">
     </div>
+
+    <div class="form-group">
+        <label for="name">博文分类</label>
+        <select class="form-control" id="category">
+            <option value=1001>技术笔记</option>
+            <option value=1003>杂谈</option>
+            <option value=1002>生活</option>
+        </select>
+    </div>
 </form>
+
 <textarea name="content" id="content">
         &lt;p&gt;输入博文内容&lt;/p&gt;
 </textarea>
@@ -49,6 +61,13 @@ require_once('./inc/navigate-bar.php');
     let editor;
     ClassicEditor
         .create( document.querySelector( '#content' ),{
+            toolbar: ['heading','|','bold','italic','|','link','bulletedList','numberedList','ckfinder','blockQuote','insertTable','|','undo','redo'],
+            ckfinder: {
+                uploadurl:'/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
+                options: {
+                    resourceType: 'Images'
+                }
+            },
             language: "zh-cn"
         } ).then( newEditor => {
             editor=newEditor;
@@ -58,11 +77,13 @@ require_once('./inc/navigate-bar.php');
     $("#submit").click(function(event){
         var title=document.getElementById("title").value;
         var short_desc=document.getElementById("short_desc").value;
+        var category=document.getElementById("category").value;
         var content=editor.getData();
         $.post('/model/db-connection.php',{
             'action':"createBlog",
             'title':title,
             'short_desc':short_desc,
+            'category':category,
             'content':content
         })
         alert("递交成功");
