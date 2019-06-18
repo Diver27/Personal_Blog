@@ -1,5 +1,5 @@
 # Personal_Blog
-A simple blog site built with PHP, utilizing Bootstrap 4.3 
+A simple blog site built with PHP, utilizing Bootstrap 4.3，with a Apache-Mysql back-end.  
 URL: [23.105.205.182](http://23.105.205.182)  
 Functional module: CKEditor, CKFinder
    
